@@ -21,7 +21,8 @@ public class ProductService {
     }
 
     public void save(ProductInputData productInputData) {
-        repository.save(mapper.mapFrom(productInputData));
+        final Product product = mapper.mapFrom(productInputData);
+        repository.save(product);
     }
 
     public List<ProductData> findAll() {
