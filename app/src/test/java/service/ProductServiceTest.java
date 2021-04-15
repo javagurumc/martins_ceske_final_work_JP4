@@ -1,5 +1,6 @@
 package service;
 
+import lv.lu.finalwork.service.ProductService;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class ProductServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        service = new ProductService();
+//        service = new ProductService();
     }
 
     @Test
