@@ -2,36 +2,38 @@ package lv.lu.finalwork.service;
 
 import lv.lu.finalwork.model.ItemNotFoundException;
 import lv.lu.finalwork.model.repository.Product;
-import lv.lu.finalwork.model.repository.ProductCategory;
+import lv.lu.finalwork.model.ui.ProductData;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.repository.ProductRepository;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProductService {
 
     private ProductRepository repository;
+    private ProductMapper mapper = new ProductMapper();
 
     public ProductService() {
         this.repository = new ProductRepository();
     }
 
     public void save(ProductInputData productInputData) {
-        Product product = new Product();
-        product.setName(productInputData.getName());
-        product.setPrice(BigDecimal.valueOf(productInputData.getPrice()));
-        product.setCategory(ProductCategory.valueOf(productInputData.getCategory()));
+        repository.save(mapper.mapFrom(productInputData));
+    }
 
-        if (productInputData.getDiscount() != null) {
-            product.setDiscount(BigDecimal.valueOf(productInputData.getDiscount()));
-        }
-        if (productInputData.getDescription() != null) {
-            product.setDescription(productInputData.getDescription());
-        }
+    public List<ProductData> findAll() {
+//        List<ProductData> result = new ArrayList<>();
+//        for (Product product : repository.findAll()) {
+//            ProductData productData = mapper.mapFrom(product);
+//            result.add(productData);
+//        }
+//        return result;
 
-        repository.save(product);
+        return repository.findAll().stream()
+                .map(mapper::mapFrom)
+                .collect(Collectors.toList());
     }
 
     public Product findById(Long id) {
@@ -46,10 +48,6 @@ public class ProductService {
         }
 
         return result.get();
-    }
-
-    public List<Product> findAll() {
-        return null;
     }
 
     public void delete(Long id) {

@@ -36,7 +36,18 @@ public class ConsulUI {
             case 1:
                 initProductSave();
                 break;
+            case 2:
+                retrieveProductsList();
+                break;
         }
+    }
+
+    private void retrieveProductsList() {
+//        for (Product product : service.findAll()) {
+//            System.out.println(product);
+//        }
+        service.findAll().stream()
+                .forEach(System.out::println);
     }
 
     private void initProductSave() {
@@ -59,6 +70,7 @@ public class ConsulUI {
         System.out.println(" === Product Accounting application === ");
         System.out.println(" Chose one option: \n");
         System.out.println(" Save product - 1");
+        System.out.println(" List all products - 2");
         System.out.println(" Exit application - 0");
         System.out.println(" Please enter the choice");
     }
