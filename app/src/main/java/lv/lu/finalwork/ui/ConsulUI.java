@@ -1,10 +1,10 @@
 package lv.lu.finalwork.ui;
 
-import lv.lu.finalwork.model.Product;
-import lv.lu.finalwork.model.ProductCategory;
+import lv.lu.finalwork.model.repository.ProductCategory;
+import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.service.ProductService;
 
-import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsulUI {
@@ -17,8 +17,9 @@ public class ConsulUI {
     }
 
     public void startUi() {
-        int userChoice = 0;
+        int userChoice;
         while (true) {
+
             printMenu();
             userChoice = scanner.nextInt();
 
@@ -28,7 +29,6 @@ public class ConsulUI {
                 break;
             }
         }
-
     }
 
     private void callServiceByChoice(int userChoice) {
@@ -40,16 +40,17 @@ public class ConsulUI {
     }
 
     private void initProductSave() {
-        Product product = new Product();
+        ProductInputData product = new ProductInputData();
 
         System.out.println("Enter product name..");
-        product.setName(scanner.nextLine());
+        product.setName(scanner.next());
 
         System.out.println("Enter product price");
-        product.setPrice(BigDecimal.valueOf(scanner.nextDouble()));
+        product.setPrice(scanner.nextDouble());
 
-//        System.out.printf("Enter product category from (%s)", ProductCategory.values());
-        product.setCategory(ProductCategory.valueOf(scanner.nextLine()));
+        System.out.printf("Enter product category from (%s)",
+                Arrays.asList(ProductCategory.values()));
+        product.setCategory(scanner.next());
 
         service.save(product);
     }
