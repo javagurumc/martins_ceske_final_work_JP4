@@ -5,16 +5,20 @@ import lv.lu.finalwork.model.repository.Product;
 import lv.lu.finalwork.model.ui.ProductData;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Component
 public class ProductService {
 
     private final ProductRepository repository;
     private final ProductMapper mapper;
 
+    @Autowired
     public ProductService(ProductRepository repository, ProductMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;

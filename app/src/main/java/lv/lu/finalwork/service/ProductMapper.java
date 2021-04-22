@@ -4,9 +4,11 @@ import lv.lu.finalwork.model.repository.Product;
 import lv.lu.finalwork.model.repository.ProductCategory;
 import lv.lu.finalwork.model.ui.ProductData;
 import lv.lu.finalwork.model.ui.ProductInputData;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component
 public class ProductMapper {
 
     public ProductData mapFrom(Product product) {
