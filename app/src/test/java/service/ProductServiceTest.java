@@ -5,17 +5,18 @@ import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.repository.ProductRepository;
 import lv.lu.finalwork.service.ProductMapper;
 import lv.lu.finalwork.service.ProductService;
+import lv.lu.finalwork.validation.ProductValidator;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -30,6 +31,9 @@ public class ProductServiceTest {
     @Mock
     private ProductMapper mapper;
 
+    @Mock
+    private ProductValidator validator;
+
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
@@ -41,10 +45,12 @@ public class ProductServiceTest {
         given(mapper.mapFrom(inputData)).willReturn(product);
         service.save(inputData);
 
-        verify(mapper).mapFrom(inputData);
-        verify(repository).save(product);
+        InOrder inOrder = Mockito.inOrder(mapper, repository, validator);
+        inOrder.verify(validator).validate(inputData);
+        inOrder.verify(mapper).mapFrom(inputData);
+        inOrder.verify(repository).save(product);
 
-        verifyNoMoreInteractions(mapper, repository);
+        verifyNoMoreInteractions(mapper, repository, validator);
     }
 
     @Test
