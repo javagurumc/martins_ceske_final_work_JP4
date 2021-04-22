@@ -4,12 +4,12 @@ import lv.lu.finalwork.model.repository.ProductCategory;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-@Component
+@Controller
 public class ConsulUI {
 
     private final ProductService service;
