@@ -32,6 +32,7 @@ public class AppConfiguration {
             @Value("${datasource.initScript}") String initScript){
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
+                .setName("FINAL_WORK")
                 .addScript(initScript)
                 .build();
     }

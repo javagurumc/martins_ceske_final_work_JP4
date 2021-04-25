@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @org.springframework.stereotype.Repository
-public class ProductOrmRepository implements Repository<Product>{
+public class ProductOrmRepository implements Repository<Product> {
 
     private final SessionFactory sessionFactory;
 
