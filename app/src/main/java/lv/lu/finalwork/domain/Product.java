@@ -1,10 +1,16 @@
-package lv.lu.finalwork.model.repository;
+package lv.lu.finalwork.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
+@Table(name = "PRODUCTS")
 public class Product {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private BigDecimal price;

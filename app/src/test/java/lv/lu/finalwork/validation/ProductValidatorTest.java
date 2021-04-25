@@ -1,7 +1,7 @@
 package lv.lu.finalwork.validation;
 
 import lv.lu.finalwork.model.ProductValidationException;
-import lv.lu.finalwork.model.repository.ProductCategory;
+import lv.lu.finalwork.domain.ProductCategory;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import org.junit.Before;
 import org.junit.Rule;

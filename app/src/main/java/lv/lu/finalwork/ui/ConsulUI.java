@@ -1,6 +1,6 @@
 package lv.lu.finalwork.ui;
 
-import lv.lu.finalwork.model.repository.ProductCategory;
+import lv.lu.finalwork.domain.ProductCategory;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

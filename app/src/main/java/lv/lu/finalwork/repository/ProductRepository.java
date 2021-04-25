@@ -1,6 +1,6 @@
 package lv.lu.finalwork.repository;
 
-import lv.lu.finalwork.model.repository.Product;
+import lv.lu.finalwork.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
