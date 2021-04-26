@@ -1,6 +1,8 @@
 package lv.lu.finalwork.config;
 
+import org.h2.server.web.WebServlet;
 import org.hibernate.SessionFactory;
+import org.hibernate.tool.hbm2ddl.SchemaUpdateTask;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,14 +13,19 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.Scanner;
 
+
+
 @Configuration
 @ComponentScan("lv.lu.finalwork")
+@EnableTransactionManagement
 @PropertySource(value = "classpath:application.properties")
 public class AppConfiguration {
 
@@ -26,6 +33,8 @@ public class AppConfiguration {
     public Scanner scanner() {
         return new Scanner(System.in);
     }
+
+
 
     @Bean
     public DataSource dataSource(
@@ -53,12 +62,16 @@ public class AppConfiguration {
     public SessionFactory sessionFactory(DataSource dataSource,
                                          @Value("${hibernate.packagesToScan}") String packagesToScan,
                                          Properties hibernateProperties
-    ) throws IOException {
+    ) throws IOException, SQLException {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setPackagesToScan(packagesToScan);
         sessionFactoryBean.setDataSource(dataSource);
         sessionFactoryBean.setHibernateProperties(hibernateProperties);
         sessionFactoryBean.afterPropertiesSet();
+        System.out.println(dataSource.getConnection().getCatalog());
+        System.out.println(dataSource.getConnection().getSchema());
+        System.out.println(dataSource.getConnection().getClientInfo());
+
         return sessionFactoryBean.getObject();
     }
 

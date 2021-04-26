@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@org.springframework.stereotype.Repository
+//@org.springframework.stereotype.Repository
 public class ProductRepository implements Repository<Product> {
 
     private final Map<Long, Product> repository;

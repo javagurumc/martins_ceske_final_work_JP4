@@ -19,14 +19,15 @@ public class ProductOrmRepository implements Repository<Product> {
 
     @Override
     public Long save(Product productEntity) {
-        Product storedEntity = (Product) this.sessionFactory.getCurrentSession().save(productEntity);
-        return storedEntity.getId();
+        Long storedEntity = (Long) this.sessionFactory.getCurrentSession().save(productEntity);
+//        return storedEntity.getId();
+        return storedEntity;
     }
 
     @Override
     public List<Product> findAll() {
         return sessionFactory.getCurrentSession()
-                .createQuery("SELECT b FROM Products b", Product.class)
+                .createQuery("FROM PRODUCTS p", Product.class)
                 .getResultList();
     }
 

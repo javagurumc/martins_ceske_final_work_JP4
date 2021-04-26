@@ -68,6 +68,9 @@ public class ConsulUI {
                 Arrays.asList(ProductCategory.values()));
         product.setCategory(scanner.next());
 
+        System.out.println("Enter product discount");
+        product.setDiscount(scanner.nextDouble());
+
         service.save(product);
     }
 
