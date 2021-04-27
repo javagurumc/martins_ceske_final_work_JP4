@@ -1,8 +1,6 @@
 package lv.lu.finalwork.config;
 
-import org.h2.server.web.WebServlet;
 import org.hibernate.SessionFactory;
-import org.hibernate.tool.hbm2ddl.SchemaUpdateTask;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,8 +18,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.util.Scanner;
-
-
 
 @Configuration
 @ComponentScan("lv.lu.finalwork")
