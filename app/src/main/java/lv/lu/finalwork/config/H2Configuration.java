@@ -35,11 +35,13 @@ public class H2Configuration {
     @Bean
     public Properties hibernateProperties(
             @Value("${hibernate.dialect}") String dialect,
-            @Value("${hibernate.hbm2dll}") String hbm2dll
+            @Value("${hibernate.hbm2dll}") String hbm2dll,
+            @Value("${hibernate.showSql}") boolean showSql
     ) {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", dialect);
         properties.put("hibernate.hbm2dll", hbm2dll);
+        properties.put("hibernate.show_sql", showSql);
         return properties;
     }
 
