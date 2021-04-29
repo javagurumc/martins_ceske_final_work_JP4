@@ -17,7 +17,17 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.6'
+
+    ext{
+        springVesrion='5.3.6'
+    }
+
+    implementation group: 'org.springframework', name: 'spring-context', version: "${ext.springVesrion}"
+    implementation group: 'org.springframework', name: 'spring-jdbc', version: "${ext.springVesrion}"
+    implementation group: 'org.springframework', name: 'spring-orm', version: "${ext.springVesrion}"
+
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.30.Final'
 
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'

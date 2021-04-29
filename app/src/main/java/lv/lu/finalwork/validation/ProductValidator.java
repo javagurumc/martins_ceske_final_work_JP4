@@ -3,8 +3,10 @@ package lv.lu.finalwork.validation;
 import lv.lu.finalwork.model.ProductValidationException;
 import lv.lu.finalwork.model.repository.ProductCategory;
 import lv.lu.finalwork.model.ui.ProductInputData;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+@Component
 public class ProductValidator {
 
     public void validate(ProductInputData productInputData) {
@@ -17,7 +19,7 @@ public class ProductValidator {
             throw new ProductValidationException("Field 'price' should not be negative");
         }
 
-        try{
+        try {
             ProductCategory.valueOf(productInputData.getCategory());
         } catch (IllegalArgumentException ex) {
             throw new ProductValidationException("Field 'productCategory' is unrecognized");
