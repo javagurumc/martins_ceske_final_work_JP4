@@ -1,7 +1,7 @@
 package lv.lu.finalwork.service;
 
-import lv.lu.finalwork.model.repository.Product;
-import lv.lu.finalwork.model.repository.ProductCategory;
+import lv.lu.finalwork.domain.Product;
+import lv.lu.finalwork.domain.ProductCategory;
 import lv.lu.finalwork.model.ui.ProductData;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import org.springframework.stereotype.Component;

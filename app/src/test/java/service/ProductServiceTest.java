@@ -1,6 +1,6 @@
 package service;
 
-import lv.lu.finalwork.model.repository.Product;
+import lv.lu.finalwork.domain.Product;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.repository.Repository;
 import lv.lu.finalwork.service.ProductMapper;
