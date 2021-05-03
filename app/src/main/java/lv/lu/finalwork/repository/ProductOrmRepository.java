@@ -43,6 +43,10 @@ public class ProductOrmRepository implements lv.lu.finalwork.repository.Reposito
 
     @Override
     public Optional<Product> findById(Long id) {
+
+
+
+
         return Optional.empty();
     }
 

@@ -26,6 +26,11 @@ dependencies {
     implementation group: 'org.springframework', name: 'spring-jdbc', version: "${ext.springVesrion}"
     implementation group: 'org.springframework', name: 'spring-orm', version: "${ext.springVesrion}"
 
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: "${ext.springVesrion}"
+    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+//    implementation group: 'org.springframework', name: 'spring-web', version: "${ext.springVesrion}"
+
     implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.30.Final'
 
