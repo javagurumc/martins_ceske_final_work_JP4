@@ -66,6 +66,7 @@ public class ConsulUI {
 
         System.out.printf("Enter product category from (%s)",
                 Arrays.asList(ProductCategory.values()));
+        System.out.println();
         product.setCategory(scanner.next());
 
         service.save(product);

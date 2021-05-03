@@ -1,7 +1,7 @@
 package lv.lu.finalwork.service;
 
-import lv.lu.finalwork.model.ItemNotFoundException;
 import lv.lu.finalwork.domain.Product;
+import lv.lu.finalwork.model.ItemNotFoundException;
 import lv.lu.finalwork.model.ui.ProductData;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.repository.ProductCrudRepository;
@@ -18,14 +18,12 @@ import java.util.stream.StreamSupport;
 @Service
 public class ProductService {
 
-//    private final Repository<Product> repository;
-    private final ProductCrudRepository repository;
+    private final Repository<Product> repository;
     private final ProductMapper mapper;
     private final ProductValidator productValidator;
 
     @Autowired
-    public ProductService(/*Repository<Product> repository,*/
-                          ProductCrudRepository repository,
+    public ProductService(Repository<Product> repository,
                           ProductMapper mapper,
                           ProductValidator productValidator) {
         this.repository = repository;
@@ -50,10 +48,6 @@ public class ProductService {
         return StreamSupport.stream(repository.findAll().spliterator(), false)
                 .map(mapper::mapFrom)
                 .collect(Collectors.toList());
-
-//        return repository.findAll().stream()
-//                .map(mapper::mapFrom)
-//                .collect(Collectors.toList());
     }
 
     public Product findById(Long id) {

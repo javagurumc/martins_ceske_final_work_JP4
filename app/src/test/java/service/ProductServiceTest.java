@@ -2,7 +2,6 @@ package service;
 
 import lv.lu.finalwork.domain.Product;
 import lv.lu.finalwork.model.ui.ProductInputData;
-import lv.lu.finalwork.repository.Repository;
 import lv.lu.finalwork.service.ProductMapper;
 import lv.lu.finalwork.service.ProductService;
 import lv.lu.finalwork.validation.ProductValidator;
@@ -26,7 +25,7 @@ public class ProductServiceTest {
     private ProductService service;
 
     @Mock
-    private Repository<Product> repository;
+    private ProductRepository repository;
 
     @Mock
     private ProductMapper mapper;

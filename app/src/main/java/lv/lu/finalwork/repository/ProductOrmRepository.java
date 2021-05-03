@@ -6,39 +6,32 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-//@Transactional
-//@Repository
+@Repository
 public class ProductOrmRepository implements lv.lu.finalwork.repository.Repository<Product> {
 
-    private final SessionFactory sessionFactory;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    @Autowired
-    public ProductOrmRepository(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
+    @Transactional
     @Override
     public Long save(Product productEntity) {
-        return (Long) this.sessionFactory.getCurrentSession().save(productEntity);
+        entityManager.persist(productEntity);
+        return productEntity.getId();
     }
 
     @Override
     public List<Product> findAll() {
-//        return sessionFactory.getCurrentSession().createCriteria(Product.class).list();
-        //Criteria API
-        Session session = sessionFactory.getCurrentSession();
-        CriteriaQuery<Product> criteriaQuery = session.getCriteriaBuilder().createQuery(Product.class);
+        CriteriaQuery<Product> criteriaQuery = entityManager.getCriteriaBuilder()
+                .createQuery(Product.class);
         criteriaQuery.from(Product.class);
-        return session.createQuery(criteriaQuery).getResultList();
-        //JPQL
-//        return sessionFactory.getCurrentSession()
-//                .createQuery("FROM PRODUCTS p", Product.class)
-//                .getResultList();
+        return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
     @Override
