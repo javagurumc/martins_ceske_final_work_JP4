@@ -11,8 +11,8 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional
-@Repository
+//@Transactional
+//@Repository
 public class ProductOrmRepository implements lv.lu.finalwork.repository.Repository<Product> {
 
     private final SessionFactory sessionFactory;
@@ -31,14 +31,14 @@ public class ProductOrmRepository implements lv.lu.finalwork.repository.Reposito
     public List<Product> findAll() {
 //        return sessionFactory.getCurrentSession().createCriteria(Product.class).list();
         //Criteria API
-//        Session session = sessionFactory.getCurrentSession();
-//        CriteriaQuery<Product> criteriaQuery = session.getCriteriaBuilder().createQuery(Product.class);
-//        criteriaQuery.from(Product.class);
-//        return session.createQuery(criteriaQuery).getResultList();
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaQuery<Product> criteriaQuery = session.getCriteriaBuilder().createQuery(Product.class);
+        criteriaQuery.from(Product.class);
+        return session.createQuery(criteriaQuery).getResultList();
         //JPQL
-        return sessionFactory.getCurrentSession()
-                .createQuery("FROM PRODUCTS p", Product.class)
-                .getResultList();
+//        return sessionFactory.getCurrentSession()
+//                .createQuery("FROM PRODUCTS p", Product.class)
+//                .getResultList();
     }
 
     @Override

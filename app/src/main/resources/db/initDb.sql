@@ -1,5 +1,3 @@
-create schema FINAL_WORK;
-
 create table PRODUCTS(
     ID BIGINT AUTO_INCREMENT NOT NULL,
     NAME VARCHAR(100) NOT NUll,

@@ -16,9 +16,9 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
 
-@EnableTransactionManagement
-@Configuration
-@PropertySource(value = "classpath:application.properties")
+//@EnableTransactionManagement
+//@Configuration
+//@PropertySource(value = "classpath:application.properties")
 public class H2Configuration {
 
     @Bean
@@ -27,8 +27,8 @@ public class H2Configuration {
     ) {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
-                .setName("FINAL_WORK")
-                .addScript(initScript)
+//                .setName("FINAL_WORK")
+//                .addScript(initScript)
                 .build();
     }
 

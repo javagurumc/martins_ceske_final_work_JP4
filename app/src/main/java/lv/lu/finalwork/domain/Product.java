@@ -4,8 +4,10 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@Entity(name = "PRODUCTS")
-@Table(name = "PRODUCTS")
+//@Entity(name = "PRODUCTS")
+//@Table(name = "PRODUCTS"/*, schema = "FINAL_WORK"*/)
+@Entity
+@Table
 public class Product {
 
     @Id
