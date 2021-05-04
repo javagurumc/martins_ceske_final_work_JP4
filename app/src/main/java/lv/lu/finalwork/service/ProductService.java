@@ -5,7 +5,6 @@ import lv.lu.finalwork.domain.Product;
 import lv.lu.finalwork.model.ui.ProductData;
 import lv.lu.finalwork.model.ui.ProductInputData;
 import lv.lu.finalwork.repository.ProductCrudRepository;
-import lv.lu.finalwork.repository.Repository;
 import lv.lu.finalwork.validation.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,14 +17,12 @@ import java.util.stream.StreamSupport;
 @Service
 public class ProductService {
 
-//    private final Repository<Product> repository;
     private final ProductCrudRepository repository;
     private final ProductMapper mapper;
     private final ProductValidator productValidator;
 
     @Autowired
-    public ProductService(/*Repository<Product> repository,*/
-                          ProductCrudRepository repository,
+    public ProductService(ProductCrudRepository repository,
                           ProductMapper mapper,
                           ProductValidator productValidator) {
         this.repository = repository;
@@ -36,6 +33,11 @@ public class ProductService {
     public void save(ProductInputData productInputData) {
         productValidator.validate(productInputData);
         final Product product = mapper.mapFrom(productInputData);
+        repository.save(product);
+    }
+
+    //for REST repository simplefied method
+    public void save(Product product) {
         repository.save(product);
     }
 
