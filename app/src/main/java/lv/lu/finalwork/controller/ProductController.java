@@ -15,14 +15,25 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-
-    @GetMapping(value = "/allproducts")
+    @RequestMapping(value = "/allproducts", method = RequestMethod.GET)
     public List<ProductData> getAllProducts(){
         return productService.findAll();
     }
 
-    @PostMapping(value = "/setproduct")
-    void saveProducts(@RequestBody Product product){
+    //Simplified REST example findAll
+    @RequestMapping(value = "/allproductssimplified", method = RequestMethod.GET)
+    public List<ProductData> getAllProductsSimplified(){
+        return productService.findAll();
+    }
+
+    @RequestMapping(value = "/saveproduct", method = RequestMethod.POST)
+    public void saveProducts(@RequestBody ProductInputData product){
         productService.save(product);
+    }
+
+    //Simplified REST example save
+    @RequestMapping(value = "/saveproductsimplified", method = RequestMethod.POST)
+    public Product saveProductSimplified(@RequestBody Product product){
+       return productService.save(product);
     }
 }

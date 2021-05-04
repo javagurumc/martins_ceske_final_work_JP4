@@ -36,9 +36,9 @@ public class ProductService {
         repository.save(product);
     }
 
-    //for REST repository simplefied method
-    public void save(Product product) {
-        repository.save(product);
+    //for REST repository simplified method
+    public Product save(Product product) {
+        return repository.save(product);
     }
 
     public List<ProductData> findAll() {
@@ -56,6 +56,10 @@ public class ProductService {
 //        return repository.findAll().stream()
 //                .map(mapper::mapFrom)
 //                .collect(Collectors.toList());
+    }
+
+    public Product findAll(Product product) {
+        return (Product) repository.findAll();
     }
 
     public Product findById(Long id) {

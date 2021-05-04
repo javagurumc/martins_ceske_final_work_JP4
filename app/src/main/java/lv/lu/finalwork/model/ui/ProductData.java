@@ -1,5 +1,8 @@
 package lv.lu.finalwork.model.ui;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class ProductData {
 
     private final String id;
