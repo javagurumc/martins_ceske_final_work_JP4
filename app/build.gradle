@@ -33,6 +33,11 @@ dependencies {
     //web dependency
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.5'
 
+    //swagger
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+
+
 //    implementation group: 'org.springframework', name: 'spring-context', version: "${ext.springVesrion}"
 //    implementation group: 'org.springframework', name: 'spring-jdbc', version: "${ext.springVesrion}"
 //    implementation group: 'org.springframework', name: 'spring-orm', version: "${ext.springVesrion}"
