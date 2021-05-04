@@ -9,13 +9,13 @@ import org.springframework.stereotype.Controller;
 import java.util.Arrays;
 import java.util.Scanner;
 
-@Controller
+//@Controller
 public class ConsulUI {
 
     private final ProductService service;
     private final Scanner scanner;
 
-    @Autowired
+//    @Autowired
     public ConsulUI(ProductService service, Scanner scanner) {
         this.service = service;
         this.scanner = scanner;

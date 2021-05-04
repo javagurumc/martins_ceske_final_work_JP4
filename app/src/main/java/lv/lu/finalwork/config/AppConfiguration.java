@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Scanner;
 
-@Configuration
-@ComponentScan("lv.lu.finalwork")
+//@Configuration
+//@ComponentScan("lv.lu.finalwork")
 public class AppConfiguration {
 
     @Bean
