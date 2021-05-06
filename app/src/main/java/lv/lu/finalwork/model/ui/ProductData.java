@@ -23,4 +23,20 @@ public class ProductData {
                 ", category='" + category + '\'' +
                 '}';
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
 }
