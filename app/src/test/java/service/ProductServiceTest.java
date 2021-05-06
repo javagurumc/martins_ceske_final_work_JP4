@@ -2,7 +2,6 @@ package service;
 
 import lv.lu.finalwork.domain.Product;
 import lv.lu.finalwork.model.ui.ProductInputData;
-import lv.lu.finalwork.repository.Repository;
 import lv.lu.finalwork.service.ProductMapper;
 import lv.lu.finalwork.service.ProductService;
 import lv.lu.finalwork.validation.ProductValidator;
@@ -15,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.data.repository.CrudRepository;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -26,7 +26,7 @@ public class ProductServiceTest {
     private ProductService service;
 
     @Mock
-    private Repository<Product> repository;
+    private CrudRepository repository;
 
     @Mock
     private ProductMapper mapper;

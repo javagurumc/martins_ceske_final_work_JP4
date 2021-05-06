@@ -1,10 +1,10 @@
 package lv.lu.finalwork.service;
 
-import lv.lu.finalwork.model.ItemNotFoundException;
 import lv.lu.finalwork.domain.Product;
+import lv.lu.finalwork.model.ItemNotFoundException;
 import lv.lu.finalwork.model.ui.ProductData;
 import lv.lu.finalwork.model.ui.ProductInputData;
-import lv.lu.finalwork.repository.Repository;
+import lv.lu.finalwork.repository.ProductCrudRepository;
 import lv.lu.finalwork.validation.ProductValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,16 +12,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class ProductService {
 
-    private final Repository<Product> repository;
+    private final ProductCrudRepository repository;
     private final ProductMapper mapper;
     private final ProductValidator productValidator;
 
     @Autowired
-    public ProductService(Repository<Product> repository,
+    public ProductService(ProductCrudRepository repository,
                           ProductMapper mapper,
                           ProductValidator productValidator) {
         this.repository = repository;
@@ -43,7 +44,7 @@ public class ProductService {
 //        }
 //        return result;
 
-        return repository.findAll().stream()
+        return StreamSupport.stream(repository.findAll().spliterator(), false)
                 .map(mapper::mapFrom)
                 .collect(Collectors.toList());
     }
@@ -63,6 +64,6 @@ public class ProductService {
     }
 
     public void delete(Long id) {
-
+        repository.findById(id).ifPresent(repository::delete);
     }
 }
