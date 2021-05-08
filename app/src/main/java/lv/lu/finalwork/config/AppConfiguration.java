@@ -9,10 +9,4 @@ import java.util.Scanner;
 @Configuration
 @ComponentScan("lv.lu.finalwork")
 public class AppConfiguration {
-
-    @Bean
-    public Scanner scanner() {
-        return new Scanner(System.in);
-    }
-
 }
